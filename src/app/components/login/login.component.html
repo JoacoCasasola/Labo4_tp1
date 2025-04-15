@@ -1,0 +1,16 @@
+<h2 style="color: rgb(83, 255, 169);">Iniciar Sesión</h2>
+<form>
+  <label for="nombre">Nombre:</label>
+  <input type="text" id="nombre" [(ngModel)]="usuario.nombre" name="nombre">
+
+  <label for="clave">Clave:</label>
+  <input type="password" id="clave" [(ngModel)]="usuario.clave" name="clave">
+
+  <button (click)="iniciarSesion()">Iniciar Sesión</button>
+
+  <h3 style="font-weight: 100; font-size: 12px; color:rgb(19, 199, 109); text-decoration:underline;">Registrarse</h3>
+</form>
+
+<div *ngIf="mensajeError" class="error-message">
+  {{ mensajeError }}
+</div>

@@ -1,0 +1,39 @@
+.sidenav-container {
+    display: flex;
+    height: 100vh;
+  }
+
+  .titulo{
+    font-size: 32px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 600;
+    color:rgb(83, 255, 169);
+  }
+  
+  mat-sidenav {
+    width: 250px;
+    background-color: #212121;
+    color: white;
+  }
+  
+  mat-sidenav a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  
+  mat-sidenav a:hover {
+    background-color: #424242;
+  }
+  
+  mat-sidenav mat-icon {
+    margin-right: 10px;
+  }
+  
+  mat-sidenav-content {
+    background-color: #323232;
+    padding: 20px;
+    flex-grow: 1;
+  }

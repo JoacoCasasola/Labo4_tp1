@@ -1,0 +1,36 @@
+.detalle-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background:#212121;
+    border-radius: 10px;
+  }
+  
+  .titulo {
+    text-align: center;
+    color: rgb(54, 192, 123);
+    margin-bottom: 20px;
+  }
+  
+  .contenido {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px; 
+  }
+  
+  .texto {
+    flex: 1;
+  }
+  
+  .texto p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: white;
+  }
+  
+  .imagen img {
+    display: flex;
+    justify-content: center;
+    max-width: 270px;
+    border-radius: 8px;
+  }
