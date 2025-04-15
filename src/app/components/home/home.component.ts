@@ -17,9 +17,9 @@ export class HomeComponent {
 
   onNavigate(route: string): void {
   if (route === 'login') {
-    this.router.navigate(['/login']); // Redirige al login
+    this.router.navigate(['/login']);
   } else {
-    this.router.navigate(['/home', route]); // Navega a las rutas hijas
+    this.router.navigate(['/home', route]);
   }
 }
 }
