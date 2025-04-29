@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
+  standalone: true,
   imports: [FormsModule, CommonModule]
 })
 export class LoginComponent {
@@ -34,10 +35,46 @@ export class LoginComponent {
         throw error;
       }
 
+      await this.registrarLog(this.usuario.nombre);
+
       this.router.navigate(['/home']);
     } catch (error) {
       console.error('Error al iniciar sesión:', error);
       this.mensajeError = 'Nombre o clave incorrectos.';
+    }
+  }
+
+  private async registrarLog(nombreUsuario: string) {
+    try {
+      const { error } = await supabase
+        .from('logs_actividad')
+        .insert([{ usuario: nombreUsuario }]);
+
+      if (error) {
+        console.error('Error al registrar log:', error);
+      }
+    } catch (error) {
+      console.error('Error inesperado al registrar log:', error);
+    }
+  }
+
+  registrarse() {
+    this.router.navigate(['/registro']);
+  }
+
+
+  accesoRapido(tipo: 'admin' | 'invitado') {
+    switch (tipo) {
+      case 'admin':
+        this.usuario.nombre = 'admin';
+        this.usuario.clave = 'admin';
+        break;
+      case 'invitado':
+        this.usuario.nombre = 'invitado';
+        this.usuario.clave = 'invitado';
+        break;
+      default:
+        this.mensajeError = 'Tipo de acceso rápido no válido.';
     }
   }
 }

@@ -8,8 +8,17 @@
 
   <button (click)="iniciarSesion()">Iniciar Sesión</button>
 
-  <h3 style="font-weight: 100; font-size: 12px; color:rgb(19, 199, 109); text-decoration:underline;">Registrarse</h3>
+  <h3 
+    style="font-weight: 100; font-size: 12px; color:rgb(19, 199, 109); text-decoration:underline; cursor: pointer;" 
+    (click)="registrarse()">
+    Registrarse
+  </h3>
 </form>
+
+<div class="botones-acceso-rapido">
+  <button (click)="accesoRapido('admin')">Administrador</button>
+  <button (click)="accesoRapido('invitado')">Invitado</button>
+</div>
 
 <div *ngIf="mensajeError" class="error-message">
   {{ mensajeError }}

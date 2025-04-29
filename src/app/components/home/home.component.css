@@ -31,9 +31,12 @@
   mat-sidenav mat-icon {
     margin-right: 10px;
   }
-  
   mat-sidenav-content {
     background-color: #323232;
     padding: 20px;
     flex-grow: 1;
+    background-image: url('C:\\Users\\Admin\\Desktop\\Labo 4\\Tp1\\Tp_1\\public\\background2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }

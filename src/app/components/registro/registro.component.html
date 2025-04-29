@@ -1,0 +1,18 @@
+<h2 style="color: rgb(83, 255, 169);">Registrarse</h2>
+<form>
+  <label for="nombre">Nombre:</label>
+  <input type="text" id="nombre" [(ngModel)]="nuevoUsuario.nombre" name="nombre">
+
+  <label for="clave">Clave:</label>
+  <input type="password" id="clave" [(ngModel)]="nuevoUsuario.clave" name="clave">
+
+  <button (click)="registrarUsuario()">Registrar</button>
+</form>
+
+<div *ngIf="mensajeError" class="error-message">
+  {{ mensajeError }}
+</div>
+
+<div *ngIf="mensajeExito" class="success-message">
+  {{ mensajeExito }}
+</div>

@@ -2,6 +2,7 @@ form {
   text-align: center;
   background-color: #212121;
   color: white;
+  margin: 0 auto;
 }
 
 form input{
@@ -18,4 +19,15 @@ button {
   justify-content: center;
   align-items: center;
   font-weight: 200;
+  margin-top: 40px;
+}
+
+.botones-acceso-rapido {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.botones-acceso-rapido button{
+  background-color: rgb(19, 119, 82);
 }

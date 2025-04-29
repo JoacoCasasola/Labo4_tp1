@@ -1,0 +1,30 @@
+.success-message {
+    color: rgb(27, 230, 56);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 200;
+}
+
+form {
+    text-align: center;
+    background-color: #212121;
+    color: white;
+}
+  
+form input{
+    max-width: 370px;
+}
+  
+button {
+    margin-top: 20px;
+}
+  
+.error-message{
+    color: rgb(230, 27, 27);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 200;
+}
+
