@@ -5,10 +5,11 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterOutlet } from '@angular/router';
+import { ChatComponent } from "../chat/chat.component";
 
 @Component({
   selector: 'app-home',
-  imports: [RouterOutlet,MatSidenavModule,MatListModule,MatIconModule,MatButtonModule],
+  imports: [RouterOutlet, MatSidenavModule, MatListModule, MatIconModule, MatButtonModule, ChatComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

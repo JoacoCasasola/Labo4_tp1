@@ -1,0 +1,29 @@
+<div class="game-container">
+  <h1>Juego del Ahorcado</h1>
+
+  <div class="word-display">
+    {{ palabraOculta.join(' ') }}
+  </div>
+
+  <div class="attempts">
+    Intentos restantes: {{ intentosRestantes }}
+  </div>
+
+  <div class="message" [class.win]="mensaje === '¡Ganaste!'" [class.lose]="mensaje === '¡Perdiste!'">
+    {{ mensaje }}
+  </div>
+
+  <div class="letters">
+    <button
+      *ngFor="let letra of letras"
+      [disabled]="letrasUsadas.includes(letra) || juegoTerminado"
+      (click)="seleccionarLetra(letra)"
+    >
+      {{ letra }}
+    </button>
+  </div>
+
+  <button class="restart-button" (click)="reiniciarJuego()" *ngIf="juegoTerminado">
+    Reiniciar Juego
+  </button>
+</div>

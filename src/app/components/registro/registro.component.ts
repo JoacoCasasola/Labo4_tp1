@@ -12,73 +12,72 @@ import { CommonModule } from '@angular/common';
   imports: [FormsModule, CommonModule]
 })
 export class RegistroComponent {
-  nuevoUsuario = { nombre: '', clave: '' };
+  nuevoUsuario = { correo: '', clave: '' };
   mensajeError: string = '';
   mensajeExito: string = '';
 
   constructor(private router: Router) {}
 
-  async registrarUsuario() {
-    if (!this.nuevoUsuario.nombre || !this.nuevoUsuario.clave) {
+  async registrarUsuario(): Promise<void> {
+    if (!this.nuevoUsuario.correo || !this.nuevoUsuario.clave) {
       this.mensajeError = 'Por favor, completa todos los campos.';
       return;
     }
 
     try {
-      const { data: usuariosExistentes, error: consultaError } = await supabase
-        .from('usuarios')
-        .select('nombre')
-        .eq('nombre', this.nuevoUsuario.nombre);
+      const { data, error } = await supabase.auth.signUp({
+        email: this.nuevoUsuario.correo,
+        password: this.nuevoUsuario.clave
+      });
 
-      if (consultaError) {
-        throw consultaError;
+      if (error) throw error;
+
+      // Extrae ID y Email del usuario registrado
+      const userId = data.user?.id;
+      const userEmail = data.user?.email;
+
+      if (!userId || !userEmail) {
+        throw new Error('No se pudo obtener información del usuario');
       }
 
-      if (usuariosExistentes && usuariosExistentes.length > 0) {
-        this.mensajeError = 'El nombre de usuario ya está registrado.';
-        return;
+      // Guarda en tabla usuarios (opcional)
+      const { error: insertUsuariosError } = await supabase
+        .from('users')
+        .insert({ id: userId, correo: userEmail });
+
+      if (insertUsuariosError) {
+        console.warn('Advertencia al guardar en usuarios:', insertUsuariosError.message);
       }
 
-      const { error: insercionError } = await supabase
-        .from('usuarios')
-        .insert([{ nombre: this.nuevoUsuario.nombre, clave: this.nuevoUsuario.clave }]);
+      // Guarda en tabla usuarios_logueados
+      const nombre_usuario = userEmail.split('@')[0];
 
-      if (insercionError) {
-        throw insercionError;
+      const { error: insertLogueadosError } = await supabase
+        .from('usuarios_logueados')
+        .upsert({
+          user_id: userId,
+          email: userEmail,
+          nombre_usuario,
+          fecha_login: new Date().toISOString()
+        }, { onConflict: 'user_id' });
+
+      if (insertLogueadosError) {
+        console.error('Error al guardar en usuarios_logueados:', insertLogueadosError.message);
       }
-
-      await this.registrarLog(this.nuevoUsuario.nombre);
 
       this.mensajeExito = '¡Registro exitoso! Iniciando sesión...';
-      this.mensajeError = ''; 
+      this.mensajeError = '';
 
-      setTimeout(() => {
-        this.router.navigate(['/home']);
-      }, 1000);
-      
+      setTimeout(() => this.router.navigate(['/home']), 1500);
+
     } catch (error: any) {
-      console.error('Error al registrar usuario:', error);
-      this.mensajeError = 'Error al registrar usuario. Inténtalo nuevamente.';
-    }
-  }
+      console.error('Detalles del error:', {
+        message: error.message,
+        status: error.status,
+        originalError: error
+      });
 
-  private async registrarLog(nombreUsuario: string) {
-    try {
-      console.log('Intentando registrar log para el usuario:', nombreUsuario);
-
-      const { error } = await supabase
-        .from('logs_actividad')
-        .insert([{ usuario: nombreUsuario }]);
-
-      if (error) {
-        console.error('Error al registrar log:', error);
-        throw new Error('Hubo un problema al registrar la actividad.');
-      }
-
-      console.log('Log registrado exitosamente.');
-    } catch (error) {
-      console.error('Error inesperado al registrar log:', error);
-      this.mensajeError = 'Ocurrió un error al registrar la actividad. Por favor, intenta nuevamente.';
+      this.mensajeError = `Error al registrar: ${error.message}`;
     }
   }
 }

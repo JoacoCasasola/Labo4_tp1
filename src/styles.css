@@ -9,6 +9,7 @@ body {
   h1, h2 {
     color: white;
     text-align: center;
+    font-family:Georgia, 'Times New Roman', Times, serif;
   }
   
   button {

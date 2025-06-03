@@ -1,0 +1,17 @@
+<div class="records-container">
+  <h2>🏆 Mejores Puntajes</h2>
+
+  <div *ngIf="loading" class="loading">Cargando datos...</div>
+
+  <div *ngIf="!loading && records.length === 0" class="no-registros">
+    No hay registros aún.
+  </div>
+
+  <ul *ngIf="!loading && records.length > 0" class="lista-records">
+    <li *ngFor="let record of records" class="record-item">
+      <strong>{{ record.juegoNombre }}:</strong>
+      {{ record.max_puntaje }} - 
+      <span class="usuario">{{ record.usuario }}</span>
+    </li>
+  </ul>
+</div>

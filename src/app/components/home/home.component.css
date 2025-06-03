@@ -1,42 +1,90 @@
 .sidenav-container {
-    display: flex;
-    height: 100vh;
-  }
+  display: flex;
+  height: 100vh;
+}
 
-  .titulo{
-    font-size: 32px;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight: 600;
-    color:rgb(83, 255, 169);
-  }
-  
-  mat-sidenav {
-    width: 250px;
-    background-color: #212121;
-    color: white;
-  }
-  
-  mat-sidenav a {
-    color: white;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    padding: 10px 20px;
-  }
-  
-  mat-sidenav a:hover {
-    background-color: #424242;
-  }
-  
-  mat-sidenav mat-icon {
-    margin-right: 10px;
-  }
-  mat-sidenav-content {
-    background-color: #323232;
-    padding: 20px;
-    flex-grow: 1;
-    background-image: url('C:\\Users\\Admin\\Desktop\\Labo 4\\Tp1\\Tp_1\\public\\background2.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
+.titulo {
+  font-size: 40px;
+  color:rgb(55, 202, 129);
+  cursor:default;
+}
+
+.cerrar{
+  color: rgb(182, 27, 27);
+}
+
+.yo{
+  color: rgb(36, 184, 110);
+}
+
+mat-sidenav {
+  width: 260px;
+  background-color: #212121;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.menu-content {
+  flex: 1;
+}
+
+.chat-wrapper {
+  margin-top: 30%;
+  padding: 5px;
+}
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  font-size: 12px;
+}
+
+.message {
+  margin-bottom: 5px;
+}
+
+.input-container {
+  display: flex;
+  gap: 5px;
+}
+
+input {
+  flex: 1;
+  padding: 5px;
+  font-size: 12px;
+  background-color: #444;
+  border: none;
+  color: white;
+  border-radius: 3px;
+}
+
+button {
+  padding: 5px 10px;
+  font-size: 12px;
+  background-color: rgb(83, 255, 169);
+  color: black;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgb(60, 200, 130);
+}
+
+mat-sidenav-content {
+  background-color: #323232;
+  padding: 20px;
+  flex-grow: 1;
+  background-image: url('C:\\Users\\Admin\\Desktop\\Labo 4\\Tp1\\Tp_1\\public\\background2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+mat-nav-list :hover{
+  background-color:#323232;
+}

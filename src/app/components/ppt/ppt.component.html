@@ -1,0 +1,23 @@
+<div class="juego-container">
+  <h2>Piedra, Papel o Tijera</h2>
+
+  <div class="puntaje">
+    <p>Jugador: {{ puntajeJugador }}</p>
+    <p>Computadora: {{ puntajeComputadora }}</p>
+  </div>
+
+  <div class="opciones">
+    <button (click)="jugar('piedra')">🌑 Piedra</button>
+    <button (click)="jugar('papel')">📄 Papel</button>
+    <button (click)="jugar('tijera')">✂️ Tijera</button>
+  </div>
+
+  <div class="resultado" *ngIf="resultado">
+    {{ resultado }}
+  </div>
+
+  <button (click)="reiniciarJuego()" *ngIf="puntajeJugador === 5 || puntajeComputadora === 5">
+    Reiniciar Juego
+  </button>
+</div>
+

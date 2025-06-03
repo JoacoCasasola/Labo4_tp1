@@ -1,0 +1,71 @@
+.game-container {
+    display: grid;
+    text-align: center;
+    justify-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    background-color: #000000b0;
+    padding: 100px 300px;
+}
+
+.word-display {
+  font-size: 2rem;
+  letter-spacing: 10px;
+  margin-bottom: 20px;
+}
+
+.attempts {
+  font-size: 1.2rem;
+  color: rgb(19, 247, 79);
+  margin-bottom: 20px;
+}
+
+.message {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.message.win {
+  color: rgb(49, 240, 49);
+}
+
+.message.lose {
+  color: red;
+}
+
+.letters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+button {
+  font-size: 1rem;
+  padding: 10px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(36, 184, 110);
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #bbb;
+  cursor: not-allowed;
+}
+
+.restart-button {
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 5px 60px;
+    background-color: rgb(36, 184, 110);
+    border-radius: 5px;
+}
+
+.restart-button:hover {
+  background-color: rgb(29, 119, 74);
+}

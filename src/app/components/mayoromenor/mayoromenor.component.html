@@ -1,0 +1,22 @@
+<div class="game-container">
+  <h1>Mayor o Menor</h1>
+
+  <div class="card-display">
+    Carta Actual: <span class="card-value">{{ cartaActual }}</span>
+  </div>
+
+  <div class="score">
+    Puntos: {{ puntos }}
+  </div>
+
+  <div class="message" [class.correct]="mensaje === '¡Correcto!'" [class.incorrect]="mensaje === '¡Incorrecto!'">
+    {{ mensaje }}
+  </div>
+
+  <div class="buttons">
+    <button (click)="elegirOpcion('mayor')">Mayor</button>
+    <button (click)="elegirOpcion('menor')">Menor</button>
+  </div>
+
+  <button class="restart-button" (click)="reiniciarJuego()">Reiniciar Juego</button>
+</div>

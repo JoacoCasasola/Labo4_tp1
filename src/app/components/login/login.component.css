@@ -2,7 +2,7 @@ form {
   text-align: center;
   background-color: #212121;
   color: white;
-  margin: 0 auto;
+  padding: 100px 200px;
 }
 
 form input{

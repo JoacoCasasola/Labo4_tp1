@@ -1,0 +1,25 @@
+<div class="game-container">
+  <h1>Preguntados</h1>
+
+  <div class="flag-container">
+    <img [src]="banderaActual" alt="Bandera del país" class="flag-image" />
+  </div>
+
+  <div class="score">
+    Puntos: {{ puntos }}
+  </div>
+
+  <div class="message" [class.correct]="mensaje === '¡Correcto!'" [class.incorrect]="mensaje === '¡Incorrecto!'">
+    {{ mensaje }}
+  </div>
+
+  <div class="buttons">
+    <button *ngFor="let opcion of opciones" (click)="verificarRespuesta(opcion)">
+      {{ opcion }}
+    </button>
+  </div>
+
+  <button class="next-button" (click)="siguientePregunta()" *ngIf="mostrarBotonSiguiente">
+    Siguiente Pregunta
+  </button>
+</div>

@@ -1,21 +1,42 @@
 <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav #sidenav mode="side" opened>
-      <mat-nav-list>
-        <h1 mat-list-item (click)="onNavigate('home')">
-          <span class="titulo">Sala de Juegos</span>
-        </h1>
-  
-        <a mat-list-item (click)="onNavigate('quien-soy')">
-          <span>Quien Soy</span>
-        </a>
-  
-        <a mat-list-item (click)="onNavigate('login')">
-          <span>Cerrar Sesion</span>
-        </a>
-      </mat-nav-list>
-    </mat-sidenav>
-  
-    <mat-sidenav-content>
-      <router-outlet></router-outlet>
-    </mat-sidenav-content>
+  <mat-sidenav #sidenav mode="side" opened>
+    <mat-nav-list>
+      <h1 mat-list-item (click)="onNavigate('home')">
+        <span class="titulo">Sala de Juegos</span>
+      </h1>
+
+      <a mat-list-item (click)="onNavigate('ahorcado')">
+        <span>Ahorcado</span>
+      </a>
+      <a mat-list-item (click)="onNavigate('mayoromenor')">
+        <span>Mayor o Menor</span>
+      </a>
+      <a mat-list-item (click)="onNavigate('banderas')">
+        <span>Preguntados</span>
+      </a>
+      <a mat-list-item (click)="onNavigate('ppt')">
+        <span>Piedra, Papel o Tijera</span>
+      </a>
+
+      <a mat-list-item (click)="onNavigate('records')">
+        <span>Records</span>
+      </a>
+
+      <a mat-list-item (click)="onNavigate('quien-soy')">
+        <span class="yo">Quien Soy</span>
+      </a>
+
+      <a mat-list-item (click)="onNavigate('login')">
+        <span class="cerrar">Cerrar Sesion</span>
+      </a>
+    </mat-nav-list>
+
+    <div class="chat-wrapper">
+      <app-chat></app-chat>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
 </mat-sidenav-container>

@@ -1,0 +1,22 @@
+<div class="chat-container">
+    <h2>Chat</h2>
+  <div class="messages">
+    <div *ngFor="let mensaje of mensajes" class="message">
+        <div class="message-content">
+          <strong class="name">{{ extraerNombreUsuario(mensaje.usuario) }}:</strong>
+          {{ mensaje.texto }}
+          <span class="message-time">{{ formatoHora(mensaje.created_at) }}</span>
+        </div>
+    </div>
+  </div>
+
+  <div class="input-container">
+    <input
+      type="text"
+      [(ngModel)]="nuevoMensaje"
+      placeholder="Escribe un mensaje..."
+      (keyup.enter)="enviarMensaje()"
+    />
+    <button class="btn-enviar" (click)="enviarMensaje()">Enviar</button>
+  </div>
+</div>
